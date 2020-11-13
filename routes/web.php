@@ -13,9 +13,6 @@
 	|
 	*/
 
-	Route::get('/', function() {
-		return [
-			'status' => 200,
-			'message' => '<h1>Hello, world!</h1>'
-		];
+	Route::get('/test', function() {
+		return view('test');
 	});
