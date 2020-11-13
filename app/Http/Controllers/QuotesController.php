@@ -9,14 +9,7 @@ class QuotesController extends Controller {
 	public function show(string $slug): View {
 		$data = Quote::query()
 					 ->where('slug', $slug)
-					 ->first();
-
-		if (!$data) {
-			abort(404, 'Sorry, that quote could not found.');
-		}
-
-		return view('quotes.quote', [
-			'data' => $data
-		]);
+					 ->firstOrFail();
+		return view('quotes.quote', compact('data'));
 	}
 }
