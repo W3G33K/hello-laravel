@@ -13,9 +13,6 @@
 	|
 	*/
 
-	Route::get('/', function() {
-		$name = (request('name') ?? 'world');
-		return view('welcome', [
-			'name' => $name
-		]);
+	Route::get('/posts/{slug}', function($slug) {
+		return $slug;
 	});
