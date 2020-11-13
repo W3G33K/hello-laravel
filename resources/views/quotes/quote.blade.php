@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<title>Laravel</title>
+		<title>VGQ</title>
 	</head>
 
 	<body>
 		<main>
-			<h1>{{ "Hello, $name!" }}</h1>
+			@json($quote)
 		</main>
 	</body>
 </html>

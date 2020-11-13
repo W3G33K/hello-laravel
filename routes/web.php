@@ -17,25 +17,25 @@
 		$quotes = [
 			'my-first-post' => [
 				'quote' => 'It’s dangerous to go alone, take this!',
-				'author' => 'Old Man',
+				'actor' => 'Old Man',
 				'game' => 'The Legend of Zelda'
 			],
 
 			'my-second-post' => [
 				'quote' => 'War. War never changes.',
-				'author' => 'Narrator',
+				'actor' => 'Narrator',
 				'game' => 'Fallout'
 			],
 
 			'my-third-post' => [
 				'quote' => 'Thank you Mario! But our Princess is in another castle!',
-				'author' => 'Toad',
+				'actor' => 'Toad',
 				'game' => 'Super Mario Bros.'
 			],
 
 			'secret-post' => [
 				'quote' => 'I used to be an adventurer like you, until I took an arrow to the knee.',
-				'author' => 'Town Guard',
+				'actor' => 'Town Guard',
 				'game' => 'Elder Scrolls V: Skyrim'
 			]
 		];
@@ -44,5 +44,7 @@
 			abort(404, 'Sorry, that quote was not found.');
 		}
 
-		return $quotes[$slug];
+		return view('quotes.quote', [
+			'quote' => $quotes[$slug]
+		]);
 	});
