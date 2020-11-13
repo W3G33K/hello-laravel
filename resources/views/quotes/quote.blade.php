@@ -15,7 +15,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<title>VGQ :: {{ $unslug(request()->route('slug')) }}</title>
+		<title>VGQ :: {{ $unslug($data->slug) }}</title>
 		<style type="text/css">
 			body {
 				font: 1.8rem/1.4 Georgia, serif;
@@ -44,15 +44,15 @@
 	<body>
 		<main>
 			<header>
-				<h1>{{ $unslug(request()->route('slug')) }}</h1>
+				<h1>{{ $unslug($data->slug) }}</h1>
 			</header>
 
 			<figure class="quote">
 				<blockquote>
-					<q>{{ $post['quote'] }}</q>
+					<q>{{ $data->quote }}</q>
 				</blockquote>
 				<figcaption>
-					{{ $post['actor'] }}, <cite>{{ $post['game'] }}</cite>
+					{{ $data->actor }}, <cite>{{ $data->game }}</cite>
 				</figcaption>
 			</figure>
 		</main>
