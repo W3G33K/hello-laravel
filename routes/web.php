@@ -14,7 +14,7 @@
 	*/
 
 	Route::get('/quotes/{slug}', function($slug) {
-		$quotes = [
+		$posts = [
 			'my-first-post' => [
 				'quote' => 'It’s dangerous to go alone, take this!',
 				'actor' => 'Old Man',
@@ -40,11 +40,11 @@
 			]
 		];
 
-		if (!array_key_exists($slug, $quotes)) {
+		if (!array_key_exists($slug, $posts)) {
 			abort(404, 'Sorry, that quote was not found.');
 		}
 
 		return view('quotes.quote', [
-			'quote' => $quotes[$slug]
+			'post' => $posts[$slug]
 		]);
 	});
