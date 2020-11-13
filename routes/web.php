@@ -14,5 +14,8 @@
 	*/
 
 	Route::get('/', function() {
-		return 'Hello, world!';
+		return [
+			'status' => 200,
+			'message' => '<h1>Hello, world!</h1>'
+		];
 	});
