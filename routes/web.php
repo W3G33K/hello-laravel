@@ -13,6 +13,7 @@
 	|
 	*/
 
-	Route::get('/test', function() {
-		return view('test');
+	Route::get('/', function() {
+		$name = (request('name') ?? 'world');
+		return "Hello, $name!";
 	});
