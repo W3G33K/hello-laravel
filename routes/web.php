@@ -15,5 +15,7 @@
 
 	Route::get('/', function() {
 		$name = (request('name') ?? 'world');
-		return "Hello, $name!";
+		return view('welcome', [
+			'name' => $name
+		]);
 	});
