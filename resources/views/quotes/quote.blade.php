@@ -22,6 +22,10 @@
 				margin: 1em;
 			}
 
+			nav a:before {
+				content: "\00AB";
+			}
+
 			.quote {
 				background: #eee;
 				border-radius: 1em;
@@ -44,6 +48,10 @@
 	<body>
 		<main>
 			<header>
+				<nav>
+					<a href="/quotes" title="Back to Most Recent Quotes">Back</a>
+				</nav>
+
 				<h1>{{ $unslug($data->slug) }}</h1>
 			</header>
 

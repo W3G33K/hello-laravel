@@ -15,4 +15,5 @@
 	|
 	*/
 
+	Route::get('/quotes', [QuotesController::class, 'index']);
 	Route::get('/quotes/{slug}', [QuotesController::class, 'show']);
