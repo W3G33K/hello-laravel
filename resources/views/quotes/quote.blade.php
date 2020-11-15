@@ -4,7 +4,7 @@
 
 @section('header')
 	<nav>
-		<a href="/quotes" title="Back to Most Recent Quotes">Back</a>
+		<a href="/quotes" title="Back to Most Recent Quotes" class="back-arrow">Back</a>
 	</nav>
 
 	<h1>{{ unslug($data->slug) }}</h1>
@@ -18,6 +18,11 @@
 		<figcaption>
 			<p>
 				{{ $data->actor }}, <cite>{{ $data->game }}</cite>
+			</p>
+			<p class="permalink">
+				<a href="/quotes/{{ $data->slug }}/edit" title="{{ $data->slug }}">
+					Edit Quote
+				</a>
 			</p>
 		</figcaption>
 	</figure>

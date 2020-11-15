@@ -12,6 +12,13 @@
 			return view('quotes.create');
 		}
 
+		public function edit(string $slug): View {
+			$data = Quote::query()
+						 ->where('slug', $slug)
+						 ->firstOrFail();
+			return view('quotes.edit', compact('data'));
+		}
+
 		public function index(): View {
 			$data = Quote::query()
 						 ->latest()
@@ -42,5 +49,16 @@
 			$quote->save();
 
 			return redirect('/quotes');
+		}
+
+		public function update(string $slug): RedirectResponse {
+			$quote = Quote::query()
+						 ->where('slug', $slug)
+						 ->firstOrFail();
+			$quote->quote = request('quote');
+			$quote->actor = request('actor');
+			$quote->game = request('game');
+			$quote->save();
+			return redirect("/quotes/$slug");
 		}
 	}

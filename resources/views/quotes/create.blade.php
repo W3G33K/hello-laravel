@@ -3,6 +3,10 @@
 @section('title', 'New Quote')
 
 @section('header')
+	<nav>
+		<a href="/quotes" title="Back to Most Recent Quotes" class="back-arrow">Back</a>
+	</nav>
+
 	<h1>@yield('title')</h1>
 @endsection
 
