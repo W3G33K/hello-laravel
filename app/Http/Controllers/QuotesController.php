@@ -5,6 +5,7 @@
 	use App\Models\Quote;
 	use Illuminate\Contracts\View\View;
 	use Illuminate\Http\RedirectResponse;
+	use Illuminate\Http\Request;
 	use Illuminate\Support\Str;
 
 	class QuotesController extends Controller {
@@ -28,41 +29,30 @@
 			return view('quotes.quote', compact('quote'));
 		}
 
-		public function store(): RedirectResponse {
-			request()->validate([
-				'quote' => 'required',
-				'actor' => 'required',
-				'game' => 'required',
-			]);
-
-			$qbody = request('quote');
-			$actor = request('actor');
-			$game = request('game');
-			$millis = (int) microtime(true);
-			$slug = Str::slug("$actor $game $millis");
-
-			$quote = new Quote();
-			$quote->slug = $slug;
-			$quote->quote = $qbody;
-			$quote->actor = $actor;
-			$quote->game = $game;
+		public function store(Request $request): RedirectResponse {
+			$quote = new Quote($this->validator($request));
+			$quote->slug = $this->slugify($quote->actor, $quote->game);
 			$quote->save();
 
 			return redirect('/quotes');
 		}
 
-		public function update(Quote $quote): RedirectResponse {
-			request()->validate([
+		public function update(Request $request, Quote $quote): RedirectResponse {
+			$quote->update($this->validator($request));
+			return redirect("/quotes/$quote->slug");
+		}
+
+		private function slugify(string... $strings): string {
+			$millis = (int) microtime(true);
+			$string = implode(" ", $strings);
+			return Str::slug("$string $millis");
+		}
+
+		private function validator(Request $request): array {
+			return $request->validate([
 				'quote' => 'required',
 				'actor' => 'required',
 				'game' => 'required',
 			]);
-
-			$quote->quote = request('quote');
-			$quote->actor = request('actor');
-			$quote->game = request('game');
-			$quote->save();
-
-			return redirect("/quotes/$quote->slug");
 		}
 	}

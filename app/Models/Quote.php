@@ -8,7 +8,19 @@
 	class Quote extends Model {
 		use HasFactory;
 
-		public function getRouteKeyName() {
+		/**
+		 * The attributes that are mass assignable.
+		 *
+		 * @var string[]
+		 */
+		protected $fillable = ['quote', 'actor', 'game'];
+
+		/**
+		 * Get the route key for the model.
+		 *
+		 * @return string
+		 */
+		public function getRouteKeyName(): string {
 			return 'slug';
 		}
 	}
