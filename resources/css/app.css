@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body {
+	font: 1.8rem/1.4 Georgia, serif;
+	margin: 1em;
+}
+
+nav a:before {
+	content: "\00AB";
+}
+
+.quote {
+	background: #eee;
+	border-radius: 1em;
+	margin: 0;
+	padding: 1em;
+}
+
+.quote figcaption,
+.quote blockquote {
+	margin: 1em;
+}
+
+.quote figcaption p:first-child:before {
+	content: "\2014";
+	margin-right: 8px;
+}
+
+.quote figcaption p:last-child a:before {
+	content: "\00BB";
+}
+
+.permalink {
+	font-size: 1rem;
+	text-align: right;
+}
