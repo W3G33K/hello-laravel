@@ -13,7 +13,7 @@
 		public function up() {
 			Schema::create('quotes', function(Blueprint $table) {
 				$table->id();
-				$table->unsignedBigInteger('user_id');
+				$table->unsignedBigInteger('user_id')->nullable(); # NULL (guests)
 				$table->string('slug')->unique();
 				$table->text('quote');
 				$table->string('actor', 48);
