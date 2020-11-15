@@ -4,14 +4,14 @@
 
 @section('header')
 	<nav>
-		<a href="/quotes" title="Back to Most Recent Quotes" class="back-arrow">Back</a>
+		<a href="{{ route('quotes.all') }}" title="Back to Most Recent Quotes" class="back-arrow">Back</a>
 	</nav>
 
 	<h1>@yield('title')</h1>
 @endsection
 
 @section('content')
-	<form action="/quotes" method="POST">
+	<form action="{{ route('quotes.store') }}" method="POST">
 		@csrf
 
 		<div>

@@ -4,14 +4,14 @@
 
 @section('header')
 	<nav>
-		<a href="/quotes/{{ $quote->slug }}" title="Back to Quote" class="back-arrow">Back</a>
+		<a href="{{ $quote->path() }}" title="Back to Quote" class="back-arrow">Back</a>
 	</nav>
 
 	<h1>@yield('title')</h1>
 @endsection
 
 @section('content')
-	<form action="/quotes/{{ $quote->slug }}" method="POST">
+	<form action="{{ route('quotes.update', $quote) }}" method="POST">
 		@csrf
 		@method('PUT')
 

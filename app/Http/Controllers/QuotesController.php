@@ -34,12 +34,14 @@
 			$quote->slug = $this->slugify($quote->actor, $quote->game);
 			$quote->save();
 
-			return redirect('/quotes');
+			return redirect(route('quotes.all'));
 		}
 
 		public function update(Request $request, Quote $quote): RedirectResponse {
 			$quote->update($this->validator($request));
-			return redirect("/quotes/$quote->slug");
+			return redirect(
+				$quote->path()
+			);
 		}
 
 		private function slugify(string... $strings): string {

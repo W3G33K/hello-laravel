@@ -23,4 +23,8 @@
 		public function getRouteKeyName(): string {
 			return 'slug';
 		}
+
+		public function path(): string {
+			return route('quotes.show', $this);
+		}
 	}

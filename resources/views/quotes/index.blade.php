@@ -4,7 +4,7 @@
 
 @section('header')
 	<nav>
-		<a href="/quotes/create" title="Create A New Quote">Create A New Quote</a>
+		<a href="{{ route('quotes.create') }}" title="Create A New Quote">Create A New Quote</a>
 	</nav>
 
 	<h1>@yield('title')</h1>
@@ -25,7 +25,7 @@
 					{{ $q->actor }}, <cite>{{ $q->game }}</cite>
 				</p>
 				<p class="permalink">
-					<a href="/quotes/{{ $q->slug }}" title="{{ $q->slug }}">
+					<a href="{{ $q->path() }}" title="{{ $q->slug }}">
 						Permalink
 					</a>
 				</p>
