@@ -11,7 +11,7 @@
 						 ->latest()
 						 ->take(10)
 						 ->get();
-			return view('quotes.home', compact('data'));
+			return view('quotes.index', compact('data'));
 		}
 
 		public function show(string $slug): View {
