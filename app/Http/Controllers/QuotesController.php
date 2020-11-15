@@ -12,11 +12,8 @@
 			return view('quotes.create');
 		}
 
-		public function edit(string $slug): View {
-			$data = Quote::query()
-						 ->where('slug', $slug)
-						 ->firstOrFail();
-			return view('quotes.edit', compact('data'));
+		public function edit(Quote $quote): View {
+			return view('quotes.edit', compact('quote'));
 		}
 
 		public function index(): View {
@@ -27,11 +24,8 @@
 			return view('quotes.index', compact('data'));
 		}
 
-		public function show(string $slug): View {
-			$data = Quote::query()
-						 ->where('slug', $slug)
-						 ->firstOrFail();
-			return view('quotes.quote', compact('data'));
+		public function show(Quote $quote): View {
+			return view('quotes.quote', compact('quote'));
 		}
 
 		public function store(): RedirectResponse {
@@ -57,20 +51,18 @@
 			return redirect('/quotes');
 		}
 
-		public function update(string $slug): RedirectResponse {
+		public function update(Quote $quote): RedirectResponse {
 			request()->validate([
 				'quote' => 'required',
 				'actor' => 'required',
 				'game' => 'required',
 			]);
 
-			$quote = Quote::query()
-						  ->where('slug', $slug)
-						  ->firstOrFail();
 			$quote->quote = request('quote');
 			$quote->actor = request('actor');
 			$quote->game = request('game');
 			$quote->save();
-			return redirect("/quotes/$slug");
+
+			return redirect("/quotes/$quote->slug");
 		}
 	}
