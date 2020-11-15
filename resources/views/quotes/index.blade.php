@@ -11,25 +11,25 @@
 @endsection
 
 @section('content')
-	@empty($data)
+	@if ($data->isEmpty())
 		<h2>No quotes for you!</h2>
-	@endempty
-
-	@foreach($data as $q)
-		<figure class="quote">
-			<blockquote>
-				<q>{{ $q->quote }}</q>
-			</blockquote>
-			<figcaption>
-				<p>
-					{{ $q->actor }}, <cite>{{ $q->game }}</cite>
-				</p>
-				<p class="permalink">
-					<a href="{{ $q->path() }}" title="{{ $q->slug }}">
-						Permalink
-					</a>
-				</p>
-			</figcaption>
-		</figure>
-	@endforeach
+	@else
+		@foreach($data as $q)
+			<figure class="quote">
+				<blockquote>
+					<q>{{ $q->quote }}</q>
+				</blockquote>
+				<figcaption>
+					<p>
+						{{ $q->actor }}, <cite>{{ $q->game }}</cite>
+					</p>
+					<p class="permalink">
+						<a href="{{ $q->path() }}" title="{{ $q->slug }}">
+							Permalink
+						</a>
+					</p>
+				</figcaption>
+			</figure>
+		@endforeach
+	@endif
 @endsection
