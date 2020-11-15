@@ -18,21 +18,30 @@
 		<div>
 			<label for="quote">Quote</label>
 			<div>
-				<textarea id="quote" name="quote">{{ $data->quote }}</textarea>
+				<textarea id="quote" name="quote">{{ old('quote', $data->quote) }}</textarea>
+				@error('quote')
+					<p>{{ $errors->first('quote') }}</p>
+				@enderror
 			</div>
 		</div>
 
 		<div>
 			<label for="actor">Actor</label>
 			<div>
-				<input type="text" id="actor" name="actor" value="{{ $data->actor }}"/>
+				<input type="text" id="actor" name="actor" value="{{ old('actor', $data->actor) }}"/>
+				@error('actor')
+					<p>{{ $errors->first('actor') }}</p>
+				@enderror
 			</div>
 		</div>
 
 		<div>
 			<label for="game">Video Game</label>
 			<div>
-				<input type="text" id="game" name="game" value="{{ $data->game }}"/>
+				<input type="text" id="game" name="game" value="{{ old('game', $data->game) }}"/>
+				@error('game')
+					<p>{{ $errors->first('game') }}</p>
+				@enderror
 			</div>
 		</div>
 

@@ -35,6 +35,12 @@
 		}
 
 		public function store(): RedirectResponse {
+			request()->validate([
+				'quote' => 'required',
+				'actor' => 'required',
+				'game' => 'required',
+			]);
+
 			$qbody = request('quote');
 			$actor = request('actor');
 			$game = request('game');
@@ -52,9 +58,15 @@
 		}
 
 		public function update(string $slug): RedirectResponse {
+			request()->validate([
+				'quote' => 'required',
+				'actor' => 'required',
+				'game' => 'required',
+			]);
+
 			$quote = Quote::query()
-						 ->where('slug', $slug)
-						 ->firstOrFail();
+						  ->where('slug', $slug)
+						  ->firstOrFail();
 			$quote->quote = request('quote');
 			$quote->actor = request('actor');
 			$quote->game = request('game');
