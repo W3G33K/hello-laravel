@@ -4,8 +4,14 @@
 
 	use App\Models\Quote;
 	use Illuminate\Contracts\View\View;
+	use Illuminate\Http\RedirectResponse;
+	use Illuminate\Support\Str;
 
 	class QuotesController extends Controller {
+		public function create(): View {
+			return view('quotes.create');
+		}
+
 		public function index(): View {
 			$data = Quote::query()
 						 ->latest()
@@ -19,5 +25,22 @@
 						 ->where('slug', $slug)
 						 ->firstOrFail();
 			return view('quotes.quote', compact('data'));
+		}
+
+		public function store(): RedirectResponse {
+			$qbody = request('quote');
+			$actor = request('actor');
+			$game = request('game');
+			$millis = (int) microtime(true);
+			$slug = Str::slug("$actor $game $millis");
+
+			$quote = new Quote();
+			$quote->slug = $slug;
+			$quote->quote = $qbody;
+			$quote->actor = $actor;
+			$quote->game = $game;
+			$quote->save();
+
+			return redirect('/quotes');
 		}
 	}

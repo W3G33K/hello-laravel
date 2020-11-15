@@ -13,7 +13,7 @@
 		public function up() {
 			Schema::create('quotes', function(Blueprint $table) {
 				$table->id();
-				$table->string('slug', 32)->unique();
+				$table->string('slug')->unique();
 				$table->text('quote');
 				$table->string('actor', 32);
 				$table->string('game', 32);

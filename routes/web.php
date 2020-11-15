@@ -16,4 +16,7 @@
 	*/
 
 	Route::get('/quotes', [QuotesController::class, 'index']);
+	Route::get('/quotes/create', [QuotesController::class, 'create']);
 	Route::get('/quotes/{slug}', [QuotesController::class, 'show']);
+
+	Route::post('/quotes', [QuotesController::class, 'store']);
