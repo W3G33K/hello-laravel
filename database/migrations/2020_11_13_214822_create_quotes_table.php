@@ -13,12 +13,18 @@
 		public function up() {
 			Schema::create('quotes', function(Blueprint $table) {
 				$table->id();
+				$table->unsignedBigInteger('user_id');
 				$table->string('slug')->unique();
 				$table->text('quote');
-				$table->string('actor', 32);
-				$table->string('game', 32);
+				$table->string('actor', 48);
+				$table->string('game', 48);
 				$table->timestamps();
 				$table->timestamp('published_at')->nullable();
+
+				$table->foreign('user_id')
+					  ->references('id')
+					  ->on('users')
+					  ->onDelete('cascade');
 			});
 		}
 
