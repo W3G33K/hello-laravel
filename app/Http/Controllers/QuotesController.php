@@ -6,6 +6,7 @@
 	use Illuminate\Contracts\View\View;
 	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Auth;
 	use Illuminate\Support\Str;
 
 	class QuotesController extends Controller {
@@ -31,6 +32,10 @@
 
 		public function store(Request $request): RedirectResponse {
 			$quote = new Quote($this->validator($request));
+			if (Auth::check()) {
+				$quote->user_id = Auth::id();
+			}
+
 			$quote->slug = $this->slugify($quote->actor, $quote->game);
 			$quote->save();
 
