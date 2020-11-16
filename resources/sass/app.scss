@@ -1,0 +1,59 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Custom/Overrides
+
+body {
+	background-color: $purple;
+	font-family: Georgia, serif;
+}
+
+h1 {
+	text-decoration: underline;
+}
+
+#navbarDropdown a:last-of-type {
+	border-bottom: 0;
+}
+
+.back-arrow:before {
+	content: "\00AB";
+}
+
+.card {
+	margin-bottom: 1rem;
+}
+
+.dropdown-item {
+	border-bottom: 2px solid #d8d8d8;
+}
+
+.dropdown-menu a:last-of-type {
+	border-bottom: 0;
+}
+
+.forward-arrow:before, .quote figcaption p:last-child a:before {
+	content: "\00BB";
+}
+
+.quote figcaption,
+.quote blockquote {
+	margin: 1em;
+}
+
+.quote figcaption p:first-child:before {
+	content: "\2014";
+	margin-right: 8px;
+}
+
+.permalink {
+	font-size: 1rem;
+	text-align: right;
+}
+
